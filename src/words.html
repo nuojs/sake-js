@@ -1,0 +1,14 @@
+
+<script>
+let obj = {};
+[...Array(66666).keys()].forEach((e, key) => {
+  if (key < 255) return;
+  let val = String.fromCharCode(e);
+  if (val == "$" || val == "_") return;
+  try {
+    eval("var " + val + "=1");
+    obj[val] = {};
+  } catch (e) {}
+});
+   document.body.innerHTML = Object.keys(obj).join('')
+</script>

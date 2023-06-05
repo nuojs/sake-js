@@ -1,5 +1,14 @@
-let fs = require('fs')
-let words = fs.readFileSync(__dirname+'/words.txt','utf-8')
+let obj = {};
+[...Array(66666).keys()].forEach((e, key) => {
+  if (key < 255) return;
+  let val = String.fromCharCode(e);
+  if (val == "$" || val == "_") return;
+  try {
+    eval("var " + val + "=1");
+    obj[val] = {};
+  } catch (e) {}
+});
+let words = Object.keys(obj).join('')
 let globalVars = [
   '0', '1', '2', '3', '4', '5', '6', '7',
   '8', '9', '.', '[', 'o', 'b', 'j', 'e',
