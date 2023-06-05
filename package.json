@@ -1,6 +1,6 @@
 {
   "name": "sake-js",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "garbage string code in dizzying javascript",
   "main": "src/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "keywords": ["obfuscator","javascript-obfuscator","jjencode","jsfuck",
   "encode", "encrypt"],
-  "author": "",
+  "author": "https://github.com/dx-luna",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nuojs/sake-js/issues"
