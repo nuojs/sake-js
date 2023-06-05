@@ -1,5 +1,5 @@
 
-let SakeJS = require('./')
+let SakeJS = require('./src')
 let text = `
 function main(t){
     console.log(t)
