@@ -45,7 +45,7 @@ let res = SakeJS.obfuscate(text,  {custom: '〆〇〡〢〣〤ㄍㄑ〳ヽ〴丿
 ````
 ## Get more custom [Words](https://cdn.jsdelivr.net/gh/nuojs/sake-js@main/src/words.txt)
 
-[https://cdn.jsdelivr.net/gh/nuojs/sake-js@main/src/words.txt](javascript:alert(1))
+[https://cdn.jsdelivr.net/gh/nuojs/sake-js@main/src/words.txt](https://nuojs.github.io/sake-js/words.html)
 
 ## Refferance from [aem1k.com](http://aem1k.com/)
 ### Note: Not support `strict mode`
