@@ -1,8 +1,8 @@
 {
   "name": "sake-js",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "garbage string code in dizzying javascript",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/nuojs/sake-js.git"
   },
-  "keywords": ["obfuscator","javascript-obfuscator","jjencode","jsfuck"],
+  "keywords": ["obfuscator","javascript-obfuscator","jjencode","jsfuck",
+  "encode", "encrypt"],
   "author": "",
   "license": "ISC",
   "bugs": {
