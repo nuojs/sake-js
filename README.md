@@ -5,8 +5,9 @@ garbage string code in dizzying javascript
 ```
 npm install sake-js
 ```
+browser
 ```html
-<script src="https://cdn.jsdelivr.net/gh/nuojs/sake-js@main/browser/index.html"></script>
+<script src="https://cdn.jsdelivr.net/gh/nuojs/sake-js@main/browser/index.js"></script>
 ```
 usage
 ```js
