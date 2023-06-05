@@ -7,10 +7,11 @@ npm install sake-js
 ```
 browser
 ```html
-<script src="https://cdn.jsdelivr.net/gh/nuojs/sake-js@main/browser/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sake-js@1.0.9/browser/index.js"></script>
 ```
 usage
 ```js
+// window.SakeJS -> browser
 let SakeJS = require('sake-js')
 let text = `
 function main(t){

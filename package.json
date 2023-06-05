@@ -1,6 +1,6 @@
 {
   "name": "sake-js",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "garbage string code in dizzying javascript",
   "main": "src/index.js",
   "scripts": {
