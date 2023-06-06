@@ -1,3 +1,4 @@
+
 /*
 MIT License
 
@@ -21,4 +22,155 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-(async function(){let n={};[...Array(66666).keys()].forEach(((t,r)=>{if(r<255)return;let e=String.fromCharCode(t);if("$"!=e&&"_"!=e)try{eval("var "+e+"=1"),n[e]={}}catch(t){}}));let t=Object.keys(n).join(""),r=["0","1","2","3","4","5","6","7","8","9",".","[","o","b","j","e","c","t"," ","O","]","r","u","f","a","l","s","n","d","i","S","g","{","}","(",")","%","E","y","p","m","k","/","C","v","h"],e=["constructor","blank_function","toString_36","toString","_eval","blank_array","fromCharCode","empty"];function o(n,t){return[...t].map((t=>n(t)))}function $(n,t,r){let e=[,...o(n,"ruefals"),,,n("n"),n("d"),,,n("i")],$=[...o(n,".[obj"),,n("c"),n("t"),n(" "),n("O"),,,,n("constructor"),,n("]")],a=o(n,"toString").join("+"),c=n("c"),i=o(n,"fill").join("+"),l=o(n,"phmky"),f=o(n,r.join("")),u=r.map((t=>n("fromCharCode")+"(+["+o(n,t.charCodeAt(0).toString()).join("+")+"])")),y=[n("0"),,n("1"),,n("2"),,n("3"),,n("4"),,n("5"),,n("6"),,n("7"),,n("8"),,n("9")];return`\n       (function(){\n       [${$}]="."+{};\n       ${n("blank_array")}=[];\n       [${e}]=[!!${c}] + !${c} + ${c}.${c};\n       [,,,,,,,,,${n("S")},,,,,${n("g")}] = ${n(".")}[${n("constructor")} += ${o(n,"onstructor").join("+")}]+${n("blank_array")};\n       [,,,,,,,,${n("empty")},,,,,${o(n,"()")},,${n("{")},,,,,,,${n("v")},,,,,,,,,${n("}")}]=\n       [][${i}]+${n("blank_array")};\n       ${n("toString")}=[${a}];\n       [${y}]=[+${n("empty")},++${n("empty")},++${n("empty")},++${n("empty")},++${n("empty")},++${n("empty")},++${n("empty")},++${n("empty")},++${n("empty")},++${n("empty")}]+${n("blank_array")};\n       ${n("blank_function")}=${n("blank_array")}[${n("constructor")}][${n("constructor")}];\n       ${n("toString_36")}=${n("blank_function")}(${n("e")},${o(n,"return e.toString(36)").join("+")});\n       [${l}]=[${n("toString_36")}(+[${n("2")}+${n("5")}]),${n("toString_36")}(+[${n("1")}+${n("7")}]),${n("toString_36")}(+[${n("2")}+${n("2")}]),${n("toString_36")}(+[${n("2")}+${n("0")}]),${n("toString_36")}(+[${n("3")}+${n("4")}])];\n       [${n("%")},,${n("C")},,,,${n("E")},,,,${n("/")}]=\n       ${n("blank_function")}(${o(n,"return escape").join("+")})()((${n("blank_array")}+${n("blank_array")})[${o(n,"italics").join("+")}]());\n       ${n("fromCharCode")}=${n("blank_function")}(${n("e")},${o(n,"return String.fromCharCode(e)").join("+")});\n       [${f}]=[${u}];\n       ${n("blank_function")}(${n("e")},${o(n,"return eval(eval(e))").join("+")})("${o(n,t)}"[${o(n,"split").join("+")}](${n(",")})[${o(n,"join").join("+")}](${n("+")}));\n       ${n("fromCharCode")},[${o(n,"sake-js")}]+${n("fromCharCode")}(${n("r")})\n       })()`.replace(/(let|;|\n| )/g,(n=>";"==n?",":""))}function a(n,t){return function(r){return t[n.indexOf(r)]}}function c(n){let r="いぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゛゜ゝゞゟァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶヷヸヹヺーヽヾヿㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦㄧㄨㄩㄪㄫㄬㄭㄮㄯ";if(n&&(n.custom&&""!=n.custom&&(r=n.custom),!0===n.random)){let n={};for(let r of[...t]){let r=[...t][Math.floor(Math.random()*t.length)];if(n[r]=r,Object.keys(n).length>255)break}r=Object.keys(n)}let e={};return r=[...r].sort((()=>.5-Math.random())),[...r].forEach((n=>e[n]={})),[...r].forEach((n=>{[...r].forEach((t=>{e[n+t]={}}))})),Object.keys(e).length>=255||[...r].forEach((n=>{[...r].forEach((t=>{[...r].forEach((r=>{e[n+t+r]={}}))}))})),Object.keys(e)}function i(n){return`\n      function remove(text){\n          let obj = {};\n          [...text].forEach(e => obj[e] = {});\n          Object.keys(obj).forEach(e => {\n              try{\n                delete window[e]\n              }catch(er){}\n          })\n      }\n      let text = arguments.callee.caller.toString();\n      remove(text);\n      ${n};`.replace(/[\n]/g,"")}function l(n){let t={};return[...n].forEach((n=>t[n]={})),Object.keys(t)}function f(n,t){let r=["+",","];return n.forEach((n=>{-1==t.indexOf(n)&&r.push(n)})),r}function u(n,t){let o=f(l(n=i(n)),r);return $(a([...e,...r,...o],c(t)),n,o)}window.SakeJS={obfuscate:u}})();
+;(async function(){
+    let obj = {};
+    [...Array(66666).keys()].forEach((e, key) => {
+      if (key < 255) return;
+      let val = String.fromCharCode(e);
+      if (val == "$" || val == "_") return;
+      try {
+        eval("var " + val + "=1");
+        obj[val] = {};
+      } catch (e) {}
+    });
+    let words = Object.keys(obj).join('')
+    let globalVars = [
+      '0', '1', '2', '3', '4', '5', '6', '7',
+      '8', '9', '.', '[', 'o', 'b', 'j', 'e',
+      'c', 't', ' ', 'O', ']', 'r', 'u', 'f',
+      'a', 'l', 's', 'n', 'd', 'i', 'S', 'g',
+      '{', '}', '(', ')', '%', 'E', 'y',
+      'p', 'm', 'k', '/', 'C', 'v', 'h',
+    ]
+    let addOns = ['constructor', 'blank_function', 'toString_36',
+        'toString', '_eval', 'blank_array', 'fromCharCode', 'empty'
+      ]
+    function Arr(t, req){
+     return [...req].map(e => t(e))
+    }
+    function buildTemplate(r, code, moreChr){
+      let t = [,...Arr(r,'ruefals'),,,r('n'),r('d'),,,r('i')]
+      let u = [...Arr(r,'.[obj'), , r('c'), r('t'), r(' '), r('O'), , , , r('constructor'), , r(']')]
+      let ts = Arr(r,'toString').join('+')
+      let c = r('c')
+      let fill = Arr(r,'fill').join('+')
+      let p = Arr(r, 'phmky')
+      let more = Arr(r, moreChr.join(''))
+      let _more = moreChr.map(e => {
+          return r('fromCharCode')+'(+['+Arr(r,e.charCodeAt(0).toString()).join('+')+'])'
+      })
+      let _1 = [r('0'),,r('1'),,r('2'),,r('3'),,r('4'),,r('5'),,r('6'),,r('7'),,r('8'),,r('9')]
+      return `
+       (function(){
+       [${u}]="."+{};
+       ${r('blank_array')}=[];
+       [${t}]=[!!${c}] + !${c} + ${c}.${c};
+       [,,,,,,,,,${r('S')},,,,,${r('g')}] = ${r('.')}[${r('constructor')} += ${Arr(r,'onstructor').join('+')}]+${r('blank_array')};
+       [,,,,,,,,${r('empty')},,,,,${Arr(r,'()')},,${r('{')},,,,,,,${r('v')},,,,,,,,,${r('}')}]=
+       [][${fill}]+${r('blank_array')};
+       ${r('toString')}=[${ts}];
+       [${_1}]=[+${r('empty')},++${r('empty')},++${r('empty')},++${r('empty')},++${r('empty')},++${r('empty')},++${r('empty')},++${r('empty')},++${r('empty')},++${r('empty')}]+${r('blank_array')};
+       ${r('blank_function')}=${r('blank_array')}[${r('constructor')}][${r('constructor')}];
+       ${r('toString_36')}=${r('blank_function')}(${r('e')},${Arr(r, 'return e.toString(36)').join('+')});
+       [${p}]=[${r('toString_36')}(+[${r('2')}+${r('5')}]),${r('toString_36')}(+[${r('1')}+${r('7')}]),${r('toString_36')}(+[${r('2')}+${r('2')}]),${r('toString_36')}(+[${r('2')}+${r('0')}]),${r('toString_36')}(+[${r('3')}+${r('4')}])];
+       [${r('%')},,${r('C')},,,,${r('E')},,,,${r('/')}]=
+       ${r('blank_function')}(${Arr(r,'return escape').join('+')})()((${r('blank_array')}+${r('blank_array')})[${Arr(r,'italics').join('+')}]());
+       ${r('fromCharCode')}=${r('blank_function')}(${r('e')},${Arr(r,'return String.fromCharCode(e)').join('+')});
+       [${more}]=[${_more}];
+       ${r('blank_function')}(${r('e')},${Arr(r, 'return eval(eval(e))').join('+')})("${Arr(r,code)}"[${Arr(r,'split').join('+')}](${r(',')})[${Arr(r,'join').join('+')}](${r('+')}));
+       ${r('fromCharCode')},[${Arr(r,'sake-js')}]+${r('fromCharCode')}(${r('r')})
+       })()`
+      .replace(/(let|;|\n| )/g, (e) => {
+          return e == ";" ? "," : "";
+        });
+    }
+    function replacer(array, replaceTo){
+     return function(req){ 
+         return replaceTo[array.indexOf(req)]
+     }
+    }
+    function build255character(options){
+      let text = "いぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゛゜ゝゞゟァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶヷヸヹヺーヽヾヿㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦㄧㄨㄩㄪㄫㄬㄭㄮㄯ"
+      //text = '〆〇〡〢〣〤ㄍㄑ〳ヽ〴丿乀乁乂〸ㆺ〻ミˌˍˎˏ灬ꓸꓹꓺꓻ'
+      if(options){
+        if(options.custom && options.custom != ''){
+          text = options.custom
+        }
+        if(options.random === true){
+          let chars = {};
+          for(let i of [...words]){
+              let c = [...words][Math.floor(Math.random() * words.length)]
+              chars[c] = c
+              if(Object.keys(chars).length > 255) break
+          }
+          text = Object.keys(chars)
+        }
+      }
+      let results = {}
+      // shuffle array 
+      text = [...text].sort( () => .5 - Math.random() ); 
+      // 1 character `a`
+      ;[...text].forEach(e => results[e] = {})
+      // 2 character `ab`
+      ;[...text].forEach(e => { 
+          ;[...text].forEach(f => {
+            results[e+f] = {}
+          })
+      })
+      if(Object.keys(results).length >= 255){
+          return Object.keys(results)
+      }else{
+      ;[...text].forEach(e => {
+          ;[...text].forEach(f => {
+              ;[...text].forEach(g => {
+                  results[e+f+g] = {}
+                })
+          })
+      })
+     }
+      return Object.keys(results)
+    }
+    function removeGlobalVars(text){
+      return `
+      function remove(text){
+          let obj = {};
+          [...text].forEach(e => obj[e] = {});
+          Object.keys(obj).forEach(e => {
+              try{
+                delete window[e]
+              }catch(er){}
+          })
+      }
+      let text = arguments.callee.caller.toString();
+      remove(text);
+      ${text};`//.replace(/[\n]/g,' ')
+    }
+    function caratersUsed(textScript){
+      let res = {};
+      [...textScript].forEach(e => res[e] = {});
+      return Object.keys(res)
+    }
+    function needCaracters(need, declarate){
+      let needs = ['+',','];
+      need.forEach(e => {
+          if(declarate.indexOf(e) == -1){
+              needs.push(e)
+          }
+      })
+      return needs
+    }
+    
+    
+function obfuscate(text, options){
+    text = removeGlobalVars(text)
+    let used = caratersUsed(text)
+    let needMoreCaracters = needCaracters(used, globalVars)
+    let fn = replacer(
+       [...addOns,...globalVars, ...needMoreCaracters], 
+       build255character(options)
+       )
+    let result = buildTemplate(fn, text, needMoreCaracters)
+    return result
+ }
+ window.SakeJS = {obfuscate}
+})()

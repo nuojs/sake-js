@@ -2,7 +2,8 @@
 let SakeJS = require('./src')
 let text = `
 function main(t){
-    console.log(t)
+    var a = 5
+    console.log(t, a)
 }
 main("hello world!!") 
 `
