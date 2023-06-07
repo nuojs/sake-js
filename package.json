@@ -4,14 +4,20 @@
   "description": "garbage string code in dizzying javascript",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "python3 -m http.server 9000"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nuojs/sake-js.git"
   },
-  "keywords": ["obfuscator","javascript-obfuscator","jjencode","jsfuck",
-  "encode", "encrypt"],
+  "keywords": [
+    "obfuscator",
+    "javascript-obfuscator",
+    "jjencode",
+    "jsfuck",
+    "encode",
+    "encrypt"
+  ],
   "author": "https://github.com/dx-luna",
   "license": "MIT",
   "bugs": {

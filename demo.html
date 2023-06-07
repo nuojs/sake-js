@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+      crossorigin="anonymous"
+      type="text/javascript"
+    ></script>
+    <script>
+      /**
+       * jQuery Lined Textarea Plugin
+       *   http://alan.blog-city.com/jquerylinedtextarea.htm
+       *
+       * Copyright (c) 2010 Alan Williamson
+       *
+       * Version:
+       *    $Id: jquery-linedtextarea.js 464 2010-01-08 10:36:33Z alan $
+       *
+       * Released under the MIT License:
+       *    http://www.opensource.org/licenses/mit-license.php
+       *
+       * Usage:
+       *   Displays a line number count column to the left of the textarea
+       *
+       *   Class up your textarea with a given class, or target it directly
+       *   with JQuery Selectors
+       *
+       *   $(".lined").linedtextarea({
+       *   	selectedLine: 10,
+       *    selectedClass: 'lineselect'
+       *   });
+       *
+       * History:
+       *   - 2010.01.08: Fixed a Google Chrome layout problem
+       *   - 2010.01.07: Refactored code for speed/readability; Fixed horizontal sizing
+       *   - 2010.01.06: Initial Release
+       *
+       */
+      (function ($) {
+        $.fn.linedtextarea = function (options) {
+          // Get the Options
+          var opts = $.extend({}, $.fn.linedtextarea.defaults, options);
+
+          /*
+           * Helper function to make sure the line numbers are always
+           * kept up to the current system
+           */
+          var fillOutLines = function (codeLines, h, lineNo) {
+            while (codeLines.height() - h <= 0) {
+              if (lineNo == opts.selectedLine)
+                codeLines.append(
+                  "<div class='lineno lineselect'>" + lineNo + "</div>"
+                );
+              else codeLines.append("<div class='lineno'>" + lineNo + "</div>");
+
+              lineNo++;
+            }
+            return lineNo;
+          };
+
+          /*
+           * Iterate through each of the elements are to be applied to
+           */
+          return this.each(function () {
+            var lineNo = 1;
+            var textarea = $(this);
+
+            /* Turn off the wrapping of as we don't want to screw up the line numbers */
+            textarea.attr("wrap", "off");
+            textarea.css({ resize: "none" });
+            var originalTextAreaWidth = textarea.outerWidth();
+
+            /* Wrap the text area in the elements we need */
+            textarea.wrap("<div class='linedtextarea'></div>");
+            var linedTextAreaDiv = textarea
+              .parent()
+              .wrap(
+                "<div class='linedwrap' style='width:" +
+                  originalTextAreaWidth +
+                  "px'></div>"
+              );
+            var linedWrapDiv = linedTextAreaDiv.parent();
+
+            linedWrapDiv.prepend(
+              "<div class='lines' style='width:50px'></div>"
+            );
+
+            var linesDiv = linedWrapDiv.find(".lines");
+            linesDiv.height(textarea.height() + 6);
+
+            /* Draw the number bar; filling it out where necessary */
+            linesDiv.append("<div class='codelines'></div>");
+            var codeLinesDiv = linesDiv.find(".codelines");
+            lineNo = fillOutLines(codeLinesDiv, linesDiv.height(), 1);
+
+            /* Move the textarea to the selected line */
+            if (opts.selectedLine != -1 && !isNaN(opts.selectedLine)) {
+              var fontSize = parseInt(textarea.height() / (lineNo - 2));
+              var position =
+                parseInt(fontSize * opts.selectedLine) - textarea.height() / 2;
+              textarea[0].scrollTop = position;
+            }
+
+            /* Set the width */
+            var sidebarWidth = linesDiv.outerWidth();
+            var paddingHorizontal =
+              parseInt(linedWrapDiv.css("border-left-width")) +
+              parseInt(linedWrapDiv.css("border-right-width")) +
+              parseInt(linedWrapDiv.css("padding-left")) +
+              parseInt(linedWrapDiv.css("padding-right"));
+            var linedWrapDivNewWidth =
+              originalTextAreaWidth - paddingHorizontal;
+            var textareaNewWidth =
+              originalTextAreaWidth - sidebarWidth - paddingHorizontal - 20;
+
+            textarea.width(textareaNewWidth);
+            linedWrapDiv.width(linedWrapDivNewWidth);
+
+            /* React to the scroll event */
+            textarea.scroll(function (tn) {
+              var domTextArea = $(this)[0];
+              var scrollTop = domTextArea.scrollTop;
+              var clientHeight = domTextArea.clientHeight;
+              codeLinesDiv.css({ "margin-top": -1 * scrollTop + "px" });
+              lineNo = fillOutLines(
+                codeLinesDiv,
+                scrollTop + clientHeight,
+                lineNo
+              );
+            });
+
+            /* Should the textarea get resized outside of our control */
+            textarea.resize(function (tn) {
+              var domTextArea = $(this)[0];
+              linesDiv.height(domTextArea.clientHeight + 6);
+            });
+          });
+        };
+
+        // default options
+        $.fn.linedtextarea.defaults = {
+          selectedLine: -1,
+          selectedClass: "lineselect",
+        };
+      })(jQuery);
+    </script>
+    <style>
+      /**
+ * jQuery Lined Textarea Plugin
+ *   http://alan.blog-city.com/jquerylinedtextarea.htm
+ *
+ * Copyright (c) 2010 Alan Williamson
+ *
+ * Released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ * Usage:
+ *   Displays a line number count column to the left of the textarea
+ *   
+ *   Class up your textarea with a given class, or target it directly
+ *   with JQuery Selectors
+ *   
+ *   $(".lined").linedtextarea({
+ *   	selectedLine: 10,
+ *    selectedClass: 'lineselect'
+ *   });
+ *
+ */
+
+      .linedwrap {
+        border: 1px solid #c0c0c0;
+        padding: 3px;
+      }
+
+      .linedtextarea {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .linedtextarea textarea,
+      .linedwrap .codelines .lineno {
+        font-size: 10pt;
+        font-family: monospace;
+        line-height: normal !important;
+      }
+
+      .linedtextarea textarea {
+        padding-right: 0.3em;
+        padding-top: 0.3em;
+        border: 0;
+      }
+
+      .linedwrap .lines {
+        margin-top: 0px;
+        width: 50px;
+        float: left;
+        overflow: hidden;
+        border-right: 1px solid #c0c0c0;
+        margin-right: 10px;
+      }
+
+      .linedwrap .codelines {
+        padding-top: 5px;
+      }
+
+      .linedwrap .codelines .lineno {
+        color: #aaaaaa;
+        padding-right: 0.5em;
+        padding-top: 0em;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      .linedwrap .codelines .lineselect {
+        color: red;
+      }
+    </style>
+    <style>
+      :root {
+        background-color: rgb(49, 54, 52);
+        color:chartreuse;
+        margin: 10px;
+        margin-left: 100px;
+        margin-right: 100px;
+      }
+      .hr {
+        border: 0;
+        border-top: 1px dashed #b5e853;
+      }
+      .padding-20{
+        padding: 20px;
+      }
+      .padding-10{
+        padding: 10px;
+      }
+      * {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+textarea {margin: 0;
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+    </style>
+    <style>
+        .btn-group button {
+          border: 1px solid green; /* Green border */
+          color: black; /* White text */
+          padding: 10px 24px; /* Some padding */
+          cursor: pointer; /* Pointer/hand icon */
+          float: left; /* Float the buttons side by side */
+        }
+        
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+        
+        .btn-group button:not(:last-child) {
+          border-right: none; /* Prevent double borders */
+        }
+        
+        /* Add a background color on hover */
+        .btn-group button:hover {
+          background-color: #b1e7b3;
+        }
+        </style>
+  </head>
+  <body>
+    <h1>Sake-JS</h1>
+    <hr class="hr" />
+    <div class="padding-10"></div>
+    <h2>JavaScript Obfuscator</h2>
+    <!-- <div class="btn-group" style="margin-left: 10px;">
+        <button style="width:10%" id="obfuscate-tab">Obfuscate</button>
+        <button style="width:10%" id="result-tab">Result</button>
+      </div> -->
+    <div class="row">
+      <div class="column" >
+        <textarea class="lined" rows="25" cols="60" charswidth="25">
+function main(text){
+    var a = 5
+    console.log(text, a)
+}
+main("hello world")</textarea>
+      </div>
+      <div class="column">
+       <button style="height: 50px;width: 100px;cursor: pointer;" onClick="obfuscate()">Obfuscate</button><br/>
+       <div class="padding-10"></div>
+       <input type="checkbox" id="random"> random</input>
+       <div class="padding-10"></div>
+       <input type="checkbox" id="custom"> custom  <a href="https://nuojs.github.io/sake-js/words.html" style="color: white;" target="_blank">caracter</a>
+      </input>
+       <div class="padding-10"></div>
+       <input type="text" id="input-custom" style="width: 250px;margin-left: 28px"></input> 
+       <div class="padding-20"></div>
+       <a href="https://github.com/nuojs/sake-js" style="color: white;" target="_blank">github.com/nuojs/sake-js</a>
+      
+    </div>
+    </div>
+
+        </div>
+        <script type="text/javascript">
+        $(function() {
+            $(".lined").linedtextarea(
+                {selectedLine: 4}
+            );
+        });
+        </script>
+        <script>
+            function obfuscate(){
+             let res = ''
+               if(!$('#random').is(':checked') && !$('#custom').is(':checked')){
+                 res = SakeJS.obfuscate($('textarea.lined').val())
+                 $('textarea.lined').val(res)
+                 return 
+               }
+               if($('#random').is(':checked')){
+                 res = SakeJS.obfuscate($('textarea.lined').val(), {random: true})
+                 $('textarea.lined').val(res)
+                 return 
+               }
+               if($('#custom').is(':checked')){
+                 res = SakeJS.obfuscate($('textarea.lined').val(), {random: false,custom: $('#input-custom').val()})
+                 $('textarea.lined').val(res)
+                 return 
+               }
+               
+            }
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sake-js@1.1.1/browser/sake-js.min.js"></script>
+
+  </body>
+</html>
