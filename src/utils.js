@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+let o = {}
 let obj = {};
 [...Array(66666).keys()].forEach((e, key) => {
   if (key < 255) return;
@@ -29,8 +30,11 @@ let obj = {};
   try {
     eval("var " + val + "=1");
     obj[val] = {};
-  } catch (e) {}
+  } catch (e) {
+    o[val] ={}
+  }
 });
+//console.log(Object.keys(o).join(''))
 let words = Object.keys(obj).join('')
 let globalVars = [
   '0', '1', '2', '3', '4', '5', '6', '7',
@@ -54,12 +58,15 @@ function buildTemplate(r, code, moreChr){
   let fill = Arr(r,'fill').join('+')
   let p = Arr(r, 'phmky')
   let more = Arr(r, moreChr.join(''))
+  let el = Arr(r, 'eval(eval(e))')
+  
   let _more = moreChr.map(e => {
       return r('fromCharCode')+'(+['+Arr(r,e.charCodeAt(0).toString()).join('+')+'])'
   })
+  // console.log(Arr(r,code))
   let _1 = [r('0'),,r('1'),,r('2'),,r('3'),,r('4'),,r('5'),,r('6'),,r('7'),,r('8'),,r('9')]
   return `
-   (function(){
+
    [${u}]="."+{};
    ${r('blank_array')}=[];
    [${t}]=[!!${c}] + !${c} + ${c}.${c};
@@ -75,9 +82,9 @@ function buildTemplate(r, code, moreChr){
    ${r('blank_function')}(${Arr(r,'return escape').join('+')})()((${r('blank_array')}+${r('blank_array')})[${Arr(r,'italics').join('+')}]());
    ${r('fromCharCode')}=${r('blank_function')}(${r('e')},${Arr(r,'return String.fromCharCode(e)').join('+')});
    [${more}]=[${_more}];
-   ${r('blank_function')}(${r('e')},${Arr(r, 'return eval(eval(e))').join('+')})("${Arr(r,code)}"[${Arr(r,'split').join('+')}](${r(',')})[${Arr(r,'join').join('+')}](${r('+')}));
-   ${r('fromCharCode')},[${Arr(r,'sake-js')}]+${r('fromCharCode')}(${r('r')})
-   })()`
+   ${r('blank_function')}(${r('e')},${el.join('+')})(/${Arr(r,code).join(' ')}/[${Arr(r,"source").join('+')}][${Arr(r,'split').join('+')}](${r(' ')})[${Arr(r,'join').join('+')}](${r('+')}));
+   ${r('fromCharCode')},[${Arr(r,'SakeJS')}]+${r('fromCharCode')}(${r('r')})
+   `
   .replace(/(let|;|\n| )/g, (e) => {
       return e == ";" ? "," : "";
     });
@@ -129,6 +136,7 @@ function build255character(options){
   return Object.keys(results)
 }
 function removeGlobalVars(text){
+  return text
   return `
   function remove(text){
       let obj = {};
@@ -149,7 +157,7 @@ function caratersUsed(textScript){
   return Object.keys(res)
 }
 function needCaracters(need, declarate){
-  let needs = ['+',','];
+  let needs = ['+',',',' '];
   need.forEach(e => {
       if(declarate.indexOf(e) == -1){
           needs.push(e)

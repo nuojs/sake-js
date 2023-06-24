@@ -1,1 +1,4 @@
-/demo.html
+node_modules
+demo.html
+test.html
+browser/index.js

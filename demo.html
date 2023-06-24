@@ -319,7 +319,7 @@ main("hello world")</textarea>
        <input type="text" id="input-custom" style="width: 250px;margin-left: 28px"></input> 
        <div class="padding-20"></div>
        <a href="https://github.com/nuojs/sake-js" style="color: white;" target="_blank">github.com/nuojs/sake-js</a>
-      
+      <br/><br/> <button style="height: 50px;width: 100px;cursor: pointer;" onClick="reset()">Reset</button><br/>
     </div>
     </div>
 
@@ -351,9 +351,16 @@ main("hello world")</textarea>
                }
                
             }
+            function reset(){
+              $('textarea.lined').val(`function main(text){
+    var a = 5
+    console.log(text, a)
+}
+main("hello world")`)
+            }
         </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/sake-js@1.1.1/browser/sake-js.min.js"></script>
+    <script src="./browser/index.js"></script>
 
   </body>
 </html>
