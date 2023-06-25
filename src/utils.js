@@ -82,12 +82,22 @@ function buildTemplate(r, code, moreChr){
    ${r('blank_function')}(${Arr(r,'return escape').join('+')})()((${r('blank_array')}+${r('blank_array')})[${Arr(r,'italics').join('+')}]());
    ${r('fromCharCode')}=${r('blank_function')}(${r('e')},${Arr(r,'return String.fromCharCode(e)').join('+')});
    [${more}]=[${_more}];
-   ${r('blank_function')}(${r('e')},${el.join('+')})(/${Arr(r,code).join(' ')}/[${Arr(r,"source").join('+')}][${Arr(r,'split').join('+')}](${r(' ')})[${Arr(r,'join').join('+')}](${r('+')}));
+   ${r('blank_function')}(${r('e')},${el.join('+')})
+   ([${Arr(r,code).join(',')}]
+   [${Arr(r,"join").join('+')}]
+   (${r('s')}
+     [${Arr(r,'slice').join('+')}]
+       (${r('1')})
+    ));
    ${r('fromCharCode')},[${Arr(r,'SakeJS')}]+${r('fromCharCode')}(${r('r')})
    `
-  .replace(/(let|;|\n| )/g, (e) => {
+  .replace(/(let|;|\n| )/g, (e) => { 
       return e == ";" ? "," : "";
     });
+    /**
+     [${Arr(r,"source").join('+')}]
+     [${Arr(r,'split').join('+')}](${r(' ')})[${Arr(r,'join').join('+')}](${r('+')}));
+     */
 }
 function replacer(array, replaceTo){
  return function(req){ 

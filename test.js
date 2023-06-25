@@ -16,7 +16,7 @@ function main(t){
 }
 main("hello world!!") 
 `;
-let invisibleCaracter = "ﾠㅤㆍ";
+let invisibleCaracter = "ﾠㅤㆍꓸꓹꓺꓻ";
 // invisibleCaracter = invisibleCaracter.split("").map((e) => e.charCodeAt(0));
 let res = SakeJS.obfuscate(text);
 // console.log(res);
@@ -26,5 +26,10 @@ let rdm = SakeJS.obfuscate(text, { random: true });
 let custom = SakeJS.obfuscate(text, {
   custom: "〆〇〡〢〣〤ㄍㄑ〳ヽ〴丿乀乁乂〸ㆺ〻ミ",
 });
+let invs = SakeJS.obfuscate(text, {
+  custom: invisibleCaracter,
+});
 
-console.log(custom);
+console.log(res);
+
+eval(custom)
