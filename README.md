@@ -25,7 +25,7 @@ npm install sake-js
 browser
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sake-js@1.1.3/browser/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sake-js@1.1.5/browser/index.min.js"></script>
 ```
 
 usage
